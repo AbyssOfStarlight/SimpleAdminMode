@@ -27,6 +27,7 @@ public class SimpleAdminMode extends Mod {
     public SimpleAdminMode() {
         Events.on(ClientLoadEvent.class, e -> {
             PlayerStatsTracker.init();
+            AntiAttemPatcher.load();
             adminList.build(Core.scene.root);
             setupSettings();
             setupTraceOverride(); // Первый запуск

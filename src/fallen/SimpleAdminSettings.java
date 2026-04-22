@@ -74,6 +74,13 @@ public class SimpleAdminSettings extends BaseDialog {
                     setup();
                     ui.showInfoFade(Core.bundle.get("sam.settings.resetDone"));
                 }).width(240f).height(50f).padTop(20);
+                table.row();
+
+                // --- СЕКЦИЯ: АНТИ-АТТЕМ ---
+                header(table, "sam.settings.iHateAttems");
+                table.check(Core.bundle.get("sam.settings.iHateAttems"), Core.settings.getBool("sam-aa", false), val -> Core.settings.put("sam-aa", val)).row();
+                //table.check(Core.bundle.get("sam.settings.aaBan"), Core.settings.getBool("sam-aab", false), val -> Core.settings.put("sam-aab", val)).row();
+
 
             }).grow();
         }).width(650f).fillY().center();
