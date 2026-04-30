@@ -147,8 +147,11 @@ public class SimpleAdminMode extends Mod {
         Events.run(Trigger.update, () -> {
             if(Vars.state.isMenu() || !Vars.net.active()) return;
             if (net.active() && state.isGame() && Core.graphics.getFrameId() % 60 == 0) {
-                syncPlayers();
-            }
+                try {
+                    syncPlayers();
+                } catch (Exception ex) {
+                    Log.err("Ошибка в syncPlayers", ex);
+                }            }
             if (net.active() && state.isGame() && Core.graphics.getFrameId() % 300 == 0) {
                 checkGriefers();
             }
@@ -257,10 +260,11 @@ public class SimpleAdminMode extends Mod {
         // Новые игроки
         currentIds.each(id -> {
             if (!knownPlayerIds.contains(id)) {
-                Log.info("SimpleAdminMode: Новый игрок ID=@ (name=@)", id,
-                        Groups.player.getByID(id) != null ? Groups.player.getByID(id).name : "?");
-                ui.showInfoFade("[green]+ [white]" +
-                        (Groups.player.getByID(id) != null ? Groups.player.getByID(id).name : "???"));
+                Player p = Groups.player.getByID(id);
+                if (p != null) {
+                    Log.info("SimpleAdminMode: Новый игрок ID=@ (name=@)", id, p.name);
+                    ui.showInfoFade("[green]+ [white]" + p.name);
+                }
             }
         });
 
@@ -277,7 +281,8 @@ public class SimpleAdminMode extends Mod {
             }
         });
 
-        knownPlayerIds = currentIds;
+        knownPlayerIds.clear();
+        knownPlayerIds.addAll(currentIds);
     }
 
     private void processPlayer(Player p) {

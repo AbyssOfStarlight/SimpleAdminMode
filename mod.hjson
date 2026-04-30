@@ -14,7 +14,7 @@ main: "fallen.SimpleAdminMode"
 description: "Mod for easier tracking and banning."
 
 #the mod version
-version: 1.6
+version: 1.7
 
 #the minimum game build required to run this mod
 minGameVersion: 155

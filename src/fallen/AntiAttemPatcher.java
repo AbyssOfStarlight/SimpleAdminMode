@@ -34,96 +34,6 @@ public class AntiAttemPatcher {
             "print \"Stop build this, or you will get BANNED\"\n" +
                     "print \"https://mindustry.dev/attem\"\n";
 
-    // Паттерны "плохого" кода(аттемы но не аттемы)
-    private static final String[] CONFIRMED_ATTEM = new String[] {
-            "read index cell1 1\n" +
-                    "jump 43 greaterThan i 0\n" +
-                    "ulocate building core false @copper outx outy found core\n" +
-                    "ucontrol move outx outy 0 0 0\n" +
-                    "ucontrol itemTake core itemNeed itemCap 0 0\n" +
-                    "write outx cell1 5\n" +
-                    "write outy cell1 6\n" +
-                    "end\n" +
-                    "jump 51 equal item @lead\n" +
-                    "jump 51 equal item @coal\n" +
-                    "jump 51 equal item @lead\n" +
-                    "jump 51 equal item @graphite\n" +
-                    "jump 51 equal item @metaglass\n" +
-                    "jump 53 equal item @phase-fabric\n" +
-                    "jump 53 equal item @surge-alloy\n" +
-                    "jump 53 greaterThan index 7\n" +
-                    "set container1 vault1",
-            "write 8 cell1 1\n" +
-                    "end\n" +
-                    "jump 125 greaterThan plast5 600\n" +
-                    "sensor cPlast5 core @plastanium\n" +
-                    "jump 125 equal cPlast5 0\n" +
-                    "control config sorter1 @plastanium 0 0 0\n" +
-                    "write 8 cell1 1\n" +
-                    "end\n" +
-                    "jump 131 greaterThan surge5 500\n" +
-                    "sensor cSurge5 core @surge-alloy\n" +
-                    "jump 131 equal cSurge5 0\n" +
-                    "control config sorter1 @surge-alloy 0 0 0\n" +
-                    "write 8 cell1 1\n" +
-                    "end\n" +
-                    "jump 137 greaterThan phase5 350\n" +
-                    "sensor cPhase core @phase-fabric\n" +
-                    "jump 137 equal cPhase 0\n" +
-                    "control config sorter1 @phase-fabric 0 0 0\n" +
-                    "write 8 cell1 1\n" +
-                    "end\n" +
-                    "jump 143 greaterThan titanium5 100\n" +
-                    "sensor cTitanium core @titanium\n" +
-                    "jump 143 equal cTitanium 0\n" +
-                    "control config sorter1 @titanium 0 0 0\n" +
-                    "write 8 cell1 1\n" +
-                    "end\n" +
-                    "control config sorter1 null 0 0 0\n" +
-                    "end\n" +
-                    "control config sorter1 @titanium 0 0 0\n",
-            "read max cell1 4\n" +
-                    "jump 25 notEqual max 0\n" +
-                    "print \"SET UNIT CAP HERE\"\n" +
-                    "set max 32\n" +
-                    "op mul fx @thisx -10000\n" +
-                    "op add flag @thisy fx\n" +
-                    "op ceil flag flag fx\n" +
-                    "write flag cell1 0\n" +
-                    "ubind UnitType\n" +
-                    "jump 33 notEqual first null\n" +
-                    "set first @unit\n" +
-                    "jump 34 always first @unit\n" +
-                    "jump 46 strictEqual first @unit\n" +
-                    "op add i i 1\n" +
-                    "sensor f @unit @flag",
-            "jump 72 notEqual min-item null\n" +
-                    "set Wait 1\n" +
-                    "jump 0 always min-item null\n" +
-                    "control config sorter1 min-item 0 0 0\n" +
-                    "set Wait 0\n" +
-                    "write index cell1 1\n" +
-                    "write total cell1 7\n" +
-                    "op div fullness total 14000\n" +
-                    "write fullness cell1 8\n" +
-                    "write c cell1 10\n" +
-                    "write min cell1 11\n" +
-                    "jump 0 always 0 false",
-            "read amount1 cell1 index1\n" +
-                    "read amount1 cell1 index1\n" +
-                    "op add amount1 amount1 amount\n" +
-                    "op add amount2 amount2 amount\n" +
-                    "write amount1 cell1 index1\n" +
-                    "write amount2 cell1 index2\n" +
-                    "jump 17 always f 0\n" +
-                    "set i 0\n" +
-                    "jump 73 greaterThanEq j 13\n" +
-                    "write 0 cell1 j\n" +
-                    "op add j j 1\n" +
-                    "jump 69 always j 13\n" +
-                    "set j 0\n" +
-                    "set first null\n" +
-                    "end"};
 
     private static final float CONFIG_DELAY_SEC = 0.25f; // 250 мс задержки очереди
     private static final Queue<LogicBlock.LogicBuild> patchQueue = new ArrayDeque<>();
@@ -283,7 +193,7 @@ public class AntiAttemPatcher {
             if (dataUuid != null && !dataUuid.isEmpty()) {
                 if(Core.settings.getBool("sam-aab", false)){
                     Call.sendChatMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid));
-                    Call.sendChatMessage("/ban " + dataUuid + " 3d here 3.3.2 Автоматический бан. https://mindustry.dev/attem" );
+                    Call.sendChatMessage("/ban " + dataUuid + " 1d here 3.3.2 Автоматический бан. https://mindustry.dev/attem" );
                 } else {
                     Call.sendChatMessage(Core.bundle.format("sam.aa.freeze-mes", dataName, dataUuid));
                     Call.sendChatMessage("/freeze " + dataUuid);
@@ -294,4 +204,94 @@ public class AntiAttemPatcher {
         }
         return false;
     }
+    // Паттерны "плохого" кода(аттемы но не аттемы)
+    private static final String[] CONFIRMED_ATTEM = new String[] {
+            "read index cell1 1\n" +
+                    "jump 43 greaterThan i 0\n" +
+                    "ulocate building core false @copper outx outy found core\n" +
+                    "ucontrol move outx outy 0 0 0\n" +
+                    "ucontrol itemTake core itemNeed itemCap 0 0\n" +
+                    "write outx cell1 5\n" +
+                    "write outy cell1 6\n" +
+                    "end\n" +
+                    "jump 51 equal item @lead\n" +
+                    "jump 51 equal item @coal\n" +
+                    "jump 51 equal item @lead\n" +
+                    "jump 51 equal item @graphite\n" +
+                    "jump 51 equal item @metaglass\n" +
+                    "jump 53 equal item @phase-fabric\n" +
+                    "jump 53 equal item @surge-alloy\n" +
+                    "jump 53 greaterThan index 7\n" +
+                    "set container1 vault1",
+            "write 8 cell1 1\n" +
+                    "end\n" +
+                    "jump 125 greaterThan plast5 600\n" +
+                    "sensor cPlast5 core @plastanium\n" +
+                    "jump 125 equal cPlast5 0\n" +
+                    "control config sorter1 @plastanium 0 0 0\n" +
+                    "write 8 cell1 1\n" +
+                    "end\n" +
+                    "jump 131 greaterThan surge5 500\n" +
+                    "sensor cSurge5 core @surge-alloy\n" +
+                    "jump 131 equal cSurge5 0\n" +
+                    "control config sorter1 @surge-alloy 0 0 0\n" +
+                    "write 8 cell1 1\n" +
+                    "end\n" +
+                    "jump 137 greaterThan phase5 350\n" +
+                    "sensor cPhase core @phase-fabric\n" +
+                    "jump 137 equal cPhase 0\n" +
+                    "control config sorter1 @phase-fabric 0 0 0\n" +
+                    "write 8 cell1 1\n" +
+                    "end\n" +
+                    "jump 143 greaterThan titanium5 100\n" +
+                    "sensor cTitanium core @titanium\n" +
+                    "jump 143 equal cTitanium 0\n" +
+                    "control config sorter1 @titanium 0 0 0\n" +
+                    "write 8 cell1 1\n" +
+                    "end\n" +
+                    "control config sorter1 null 0 0 0\n" +
+                    "end\n" +
+                    "control config sorter1 @titanium 0 0 0\n",
+            "read max cell1 4\n" +
+                    "jump 25 notEqual max 0\n" +
+                    "print \"SET UNIT CAP HERE\"\n" +
+                    "set max 32\n" +
+                    "op mul fx @thisx -10000\n" +
+                    "op add flag @thisy fx\n" +
+                    "op ceil flag flag fx\n" +
+                    "write flag cell1 0\n" +
+                    "ubind UnitType\n" +
+                    "jump 33 notEqual first null\n" +
+                    "set first @unit\n" +
+                    "jump 34 always first @unit\n" +
+                    "jump 46 strictEqual first @unit\n" +
+                    "op add i i 1\n" +
+                    "sensor f @unit @flag",
+            "jump 72 notEqual min-item null\n" +
+                    "set Wait 1\n" +
+                    "jump 0 always min-item null\n" +
+                    "control config sorter1 min-item 0 0 0\n" +
+                    "set Wait 0\n" +
+                    "write index cell1 1\n" +
+                    "write total cell1 7\n" +
+                    "op div fullness total 14000\n" +
+                    "write fullness cell1 8\n" +
+                    "write c cell1 10\n" +
+                    "write min cell1 11\n" +
+                    "jump 0 always 0 false",
+            "read amount1 cell1 index1\n" +
+                    "read amount1 cell1 index1\n" +
+                    "op add amount1 amount1 amount\n" +
+                    "op add amount2 amount2 amount\n" +
+                    "write amount1 cell1 index1\n" +
+                    "write amount2 cell1 index2\n" +
+                    "jump 17 always f 0\n" +
+                    "set i 0\n" +
+                    "jump 73 greaterThanEq j 13\n" +
+                    "write 0 cell1 j\n" +
+                    "op add j j 1\n" +
+                    "jump 69 always j 13\n" +
+                    "set j 0\n" +
+                    "set first null\n" +
+                    "end"};
 }

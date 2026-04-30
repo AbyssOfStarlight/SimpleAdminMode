@@ -98,7 +98,7 @@ public class PlayerData {
             }
         };
 
-        Timer.schedule(traceTask, 0f, TRACE_INTERVAL);
+        Timer.schedule(traceTask, 1f, TRACE_INTERVAL);
     }
 
     public void stopTraceRequests() {

@@ -1,6 +1,7 @@
 package fallen;
 
 import arc.Events;
+import arc.math.Mathf;
 import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.game.EventType.*;
@@ -80,7 +81,7 @@ public class PlayerStatsTracker {
 
             if (e.tile.dst(closestCore) < radius * Vars.tilesize) {
                 Vars.player.sendMessage(Core.bundle.format("sam.ag.buildAlert",
-                        e.unit.getPlayer().name, block.localizedName + " " + mindustry.ui.Fonts.getUnicodeStr(block.name) + "(" + e.tile.getX()/8 + "," + e.tile.getY()/8 + ")"));
+                        e.unit.getPlayer().name, block.localizedName + " " + mindustry.ui.Fonts.getUnicodeStr(block.name) + "(" + Mathf.round(e.tile.getX()/8) + " , " + Mathf.round(e.tile.getY()/8) + ")"));
             }
         }
     }
