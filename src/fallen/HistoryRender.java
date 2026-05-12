@@ -34,6 +34,7 @@ public class HistoryRender {
         targetNick = nick;
         nickStartTime = Time.globalTime;
         timerAlpha = 1f;
+        ui.hudfrag.showToast("[#ffaa55]Просмотр истории:\n[white]" + targetNick);
     }
 
     private static void drawActionHistory() {
