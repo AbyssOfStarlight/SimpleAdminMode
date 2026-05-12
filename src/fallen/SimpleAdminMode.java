@@ -22,6 +22,8 @@ public class SimpleAdminMode extends Mod {
     private IntSet knownPlayerIds = new IntSet();
     private static TraceDialog originalTraces;
     private static ObjectMap<Integer, Float> lastAutoTime = new ObjectMap<>();
+    private static String lastMapName = "", lastMapAuthor = "", lastServerAddr = "";
+    private static double lastPlaytime = 0f;
 
 
     public SimpleAdminMode() {
@@ -125,11 +127,32 @@ public class SimpleAdminMode extends Mod {
 //        });
 
         Events.on(WorldLoadEvent.class, e -> {
-            playerHistory.clear();
-            autoTraceRequested.clear();
-            knownPlayerIds.clear();
-            lastAutoTime.clear();
-            ActionsHistory.clearactionhistory();
+            String currentMap = Vars.state.map.name();
+            String currentAuthor = Vars.state.map.author();
+            String currentServer = Vars.net.client() ? (Vars.player.con != null ? Vars.player.con.address : "remote") : "local";
+            double currentPlaytime = Vars.state.tick;
+
+            boolean isSameSession = currentMap.equals(lastMapName) &&
+                    currentAuthor.equals(lastMapAuthor) &&
+                    currentServer.equals(lastServerAddr) &&
+                    currentPlaytime >= (lastPlaytime - 600f);
+            if (!isSameSession) {
+                playerHistory.clear();
+                autoTraceRequested.clear();
+                knownPlayerIds.clear();
+                lastAutoTime.clear();
+                ActionsHistory.clearactionhistory();
+                HistoryRender.targetNick = null;
+
+                Log.info("[SAM] New session detected (Map reset or change). History cleared.");
+            } else {
+                Log.info("[SAM] Reconnect/Sync detected. History preserved. Time delta: " + (currentPlaytime - lastPlaytime)/60f + "s");
+            }
+            lastMapName = currentMap;
+            lastMapAuthor = currentAuthor;
+            lastServerAddr = currentServer;
+            lastPlaytime = currentPlaytime;
+
             setupTraceOverride();
 
             Timer.schedule(() -> {
