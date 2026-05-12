@@ -205,6 +205,15 @@ public class SimpleAdminList{
             button.table(nameTable -> {
                 nameTable.left().defaults().pad(2);
 
+                // Иконка юнита и переход к нему
+                if (user.player.unit() != null && user.player.unit().type != null) {
+                    nameTable.button(Styles.cleart.disabled, () -> {
+                        control.input.spectate(user.player.unit());
+                    }).width(50f).height(35f).get().image(user.player.unit().icon()).size(20f).scaling(Scaling.fit);
+                } else {
+                    nameTable.button(Icon.cancelSmall, Styles.cleari, () -> {
+                    }).width(50f).height(35f);
+                }
                 // Имя игрока (занимает всё доступное место)
                 nameTable.add(user.name).left().growX().wrap();
 
@@ -238,7 +247,9 @@ public class SimpleAdminList{
                     infoTable.button(st -> {
                         st.defaults().padLeft(2).padRight(2).fontScale(0.8f);
                         st.add(new Label(() -> "[green]" + user.builds + "[]| [red]" + user.breaks + "[]| [sky]" + user.configs)).minWidth(60);
-                    }, Styles.flatBordert, () -> {}).right().height(24).padRight(4);
+                    }, Styles.flatBordert, () -> {
+                        HistoryRender.setTarget(user.name);
+                    }).right().height(24).padRight(4);
                 }
                 // Кнопки действий
                 if (user.online) {

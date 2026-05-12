@@ -27,6 +27,7 @@ public class SimpleAdminMode extends Mod {
     public SimpleAdminMode() {
         Events.on(ClientLoadEvent.class, e -> {
             PlayerStatsTracker.init();
+            HistoryRender.init();
             AntiAttemPatcher.load();
             adminList.build(Core.scene.root);
             setupSettings();
@@ -128,7 +129,7 @@ public class SimpleAdminMode extends Mod {
             autoTraceRequested.clear();
             knownPlayerIds.clear();
             lastAutoTime.clear();
-
+            ActionsHistory.clearactionhistory();
             setupTraceOverride();
 
             Timer.schedule(() -> {

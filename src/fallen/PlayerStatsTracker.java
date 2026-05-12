@@ -2,6 +2,7 @@ package fallen;
 
 import arc.Events;
 import arc.math.Mathf;
+import arc.util.Strings;
 import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.game.EventType.*;
@@ -28,6 +29,25 @@ public class PlayerStatsTracker {
 
             if(data == null) return;
 
+            if(Core.settings.getBool("sam-log-save", false)){
+                short blockId;
+                if (e.tile.build instanceof ConstructBlock.ConstructBuild cons) {
+                    blockId = cons.current.id;
+                } else {
+                    blockId = e.tile.block().id;
+                }
+
+                int rotation = e.tile.build != null ? e.tile.build.rotation : 0;
+                Object config = e.tile.build != null ? e.tile.build.config() : null;
+
+                ActionsHistory.blocksplayersplans.addFirst(new ActionsHistory.BlockPlayerPlan(
+                        e.tile.x, e.tile.y, (short) rotation,
+                        blockId, config,
+                        Strings.stripColors(data.name), e.breaking
+                ));
+                //Log.info("Block: " + (e.breaking ? "Removed " : "Placed ") + Vars.content.block(blockId).localizedName);
+            }
+
             if(e.breaking) data.breaks++;
             else data.builds++;
         });
@@ -35,13 +55,23 @@ public class PlayerStatsTracker {
         Events.on(ConfigEvent.class, e -> {
             if(!Core.settings.getBool("sam-show-stats", false) || e.player == null) return;
             PlayerData data = playerHistory.get(e.player.id);
-            if(data != null) data.configs++;
+            if(data != null) {
+                data.configs++;
+                if(Core.settings.getBool("sam-log-save", false)){
+                    ActionsHistory.blockconfplayersplans.addFirst(new ActionsHistory.BlockConfigPlayerPlan( (int)e.tile.x/8, (int)e.tile.y/8, e.tile.block.id, data.name));
+                }
+            }
         });
 
         Events.on(BuildRotateEvent.class, e -> {
             if(!Core.settings.getBool("sam-show-stats", false) || e.unit == null || e.unit.getPlayer() == null) return;
             PlayerData data = playerHistory.get(e.unit.getPlayer().id);
-            if(data != null) data.configs++;
+            if(data != null) {
+                data.configs++;
+                if(Core.settings.getBool("sam-log-save", false)){
+                    ActionsHistory.blockconfplayersplans.addFirst(new ActionsHistory.BlockConfigPlayerPlan( (int)e.build.x/8, (int)e.build.y/8, e.build.block.id, data.name));
+                }
+            }
         });
     }
 

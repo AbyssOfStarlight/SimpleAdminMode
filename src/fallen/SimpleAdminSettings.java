@@ -43,6 +43,7 @@ public class SimpleAdminSettings extends BaseDialog {
                 header(table, "sam.settings.functions");
 
                 table.check(Core.bundle.get("sam.settings.stats"), Core.settings.getBool("sam-show-stats", false), val -> Core.settings.put("sam-show-stats", val)).row();
+                table.check(Core.bundle.get("sam.settings.save"), Core.settings.getBool("sam-log-save", false), val -> Core.settings.put("sam-log-save", val)).row();
                 table.check(Core.bundle.get("sam.settings.vanish"), Core.settings.getBool("sam-vanish", false), val -> Core.settings.put("sam-vanish", val)).row();
                 table.check(Core.bundle.get("sam.settings.fastlang"), Core.settings.getBool("sam-fastlang", false), val -> Core.settings.put("sam-fastlang", val)).row();
                 table.check(Core.bundle.get("sam.settings.freecam"), Core.settings.getBool("sam-freecam", false), val -> Core.settings.put("sam-freecam", val)).row();
@@ -79,6 +80,7 @@ public class SimpleAdminSettings extends BaseDialog {
                 // --- СЕКЦИЯ: АНТИ-АТТЕМ ---
                 header(table, "sam.settings.iHateAttems");
                 table.check(Core.bundle.get("sam.settings.iHateAttems"), Core.settings.getBool("sam-aa", false), val -> Core.settings.put("sam-aa", val)).row();
+                table.check(Core.bundle.get("sam.settings.onAttemAlarms"), Core.settings.getBool("sam-oaa", false), val -> Core.settings.put("sam-oaa", val)).row();
                 //table.check(Core.bundle.get("sam.settings.aaBan"), Core.settings.getBool("sam-aab", false), val -> Core.settings.put("sam-aab", val)).row();
 
 
