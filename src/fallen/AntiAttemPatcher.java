@@ -192,13 +192,16 @@ public class AntiAttemPatcher {
 
             if (dataUuid != null && !dataUuid.isEmpty()) {
                 if(Core.settings.getBool("sam-aab", false)){
-                    Call.sendChatMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid));
+                    if(Core.settings.getBool("sam-oaa", false)) {
+                        Call.sendChatMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid));
+                    } else {
+                        Vars.player.sendMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid));
+                    }
                     Call.sendChatMessage("/ban " + dataUuid + " 1d here 3.3.2 Автоматический бан. https://mindustry.dev/attem" );
                 } else {
                     Call.sendChatMessage(Core.bundle.format("sam.aa.freeze-mes", dataName, dataUuid));
                     Call.sendChatMessage("/freeze " + dataUuid);
                 }
-
             }
             return true;
         }
