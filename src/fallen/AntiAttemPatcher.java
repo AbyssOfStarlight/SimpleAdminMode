@@ -86,7 +86,7 @@ public class AntiAttemPatcher {
             }
         Building build = event.tile.build;
         if (build instanceof LogicBlock.LogicBuild processor) {
-            if (containsBadCode(processor.code, playerData)) {
+            if (containsBadCode(processor.code, playerData, processor)) {
                 queuePatch(processor);
             }
         }
@@ -106,7 +106,7 @@ public class AntiAttemPatcher {
         }
         Building build = event.tile;
         if (build instanceof LogicBlock.LogicBuild processor) {
-            if (containsBadCode(processor.code, playerData)) {
+            if (containsBadCode(processor.code, playerData, processor)) {
                 queuePatch(processor);
             }
         }
@@ -121,7 +121,7 @@ public class AntiAttemPatcher {
 
         for (Building build : builds) {
             if (build instanceof LogicBlock.LogicBuild processor) {
-                if (containsBadCode(processor.code, null)) {
+                if (containsBadCode(processor.code, null, processor)) {
                     queuePatch(processor);
                     patched++;
                 }
@@ -170,7 +170,7 @@ public class AntiAttemPatcher {
     }
 
     // Проверка: содержит ли код один из запрещённых паттернов
-    private static boolean containsBadCode(String code, PlayerData playerData) {
+    private static boolean containsBadCode(String code, PlayerData playerData, LogicBlock.LogicBuild processor) {
         if (code == null || code.isEmpty()) return false;
         boolean isBad = false;
         String dataName = (playerData != null) ? playerData.name : "[gray]<?>Unknown[]";
@@ -193,13 +193,13 @@ public class AntiAttemPatcher {
             if (dataUuid != null && !dataUuid.isEmpty()) {
                 if(Core.settings.getBool("sam-aab", false)){
                     if(Core.settings.getBool("sam-oaa", false)) {
-                        Call.sendChatMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid));
+                        Call.sendChatMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid, processor.tileX(), processor.tileY()));
                     } else {
-                        Vars.player.sendMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid));
+                        Vars.player.sendMessage(Core.bundle.format("sam.aa.ban-mes", dataName, dataUuid, processor.tileX(), processor.tileY()));
                     }
-                    Call.sendChatMessage("/ban " + dataUuid + " 1d here 3.3.2 Автоматический бан. https://mindustry.dev/attem" );
+                    Call.sendChatMessage("/ban " + dataUuid + " 1d here 5.2.3 Автоматический бан. https://mindustry.dev/attem" );
                 } else {
-                    Call.sendChatMessage(Core.bundle.format("sam.aa.freeze-mes", dataName, dataUuid));
+                    Call.sendChatMessage(Core.bundle.format("sam.aa.freeze-mes", dataName, dataUuid, processor.tileX(), processor.tileY()));
                     Call.sendChatMessage("/freeze " + dataUuid);
                 }
             }
