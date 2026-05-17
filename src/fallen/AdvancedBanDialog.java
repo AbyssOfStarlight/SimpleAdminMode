@@ -28,8 +28,8 @@ public class AdvancedBanDialog extends BaseDialog {
                 st.button("Survival", Styles.togglet, () -> currentScope = "survival").size(80, 40).group(sg);
                 st.button("PvP", Styles.togglet, () -> currentScope = "pvp").size(80, 40).group(sg);
 
-                st.button("E_ATK", Styles.togglet, () -> currentScope = "eattack").size(80, 40).group(sg);
-                st.button("E_SRV", Styles.togglet, () -> currentScope = "esurvival").size(80, 40).group(sg);
+                //st.button("E_ATK", Styles.togglet, () -> currentScope = "eattack").size(80, 40).group(sg);
+                //st.button("E_SRV", Styles.togglet, () -> currentScope = "esurvival").size(80, 40).group(sg);
             });
         }).row();
 
@@ -40,37 +40,58 @@ public class AdvancedBanDialog extends BaseDialog {
 
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1"), "2.1", 1, 30, 14, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2"), "2.2", 1, 30, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2"), "2.2", 1, 14, 1, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_3"), "2.3", 3, 30, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_3"), "2.3", 1, 7, 7, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_4"), "2.4", 7, 14, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3"), "3", 1, 90, 7, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_7"), "2.7", 7, 30, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4"), "4", 1, 14, 1, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1_1"), "3.1.1", 3, 30, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_1"), "5.1", 1, 30, 2, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1_2"), "3.1.2", 3, 60, 30, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2"), "5.2", 1, 30, 3, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1_3"), "3.1.3", 7, 30, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_3"), "5.3", 0, 0, 0, "perm");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1_4"), "3.1.4", 7, 30, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_4"), "5.4", 1, 30, 7, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1_5"), "3.1.5", 0, 0, 0, "perm");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_5"), "5.5", 3, 14, 14, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1_6"), "3.1.6", 1, 30, 1, "d");
+            // so many many rules...
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1_7"), "3.1.7", 0, 0, 0, "perm");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_1"), Core.bundle.get("sam.ban.rule.2_1_1"), 3, 14, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_2"), Core.bundle.get("sam.ban.rule.2_1_2"), 14, 90, 30, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_3"), Core.bundle.get("sam.ban.rule.2_1_3"), 14, 90, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_4"), Core.bundle.get("sam.ban.rule.2_1_4"), 7, 30, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_5"), Core.bundle.get("sam.ban.rule.2_1_5"), 30, 90, 30, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_2"), "3.2", 2, 20, 2, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_1"), Core.bundle.get("sam.ban.rule.2_2_1"), 1, 14, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_2"), Core.bundle.get("sam.ban.rule.2_2_2"), 1, 7, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_3"), Core.bundle.get("sam.ban.rule.2_2_3"), 1, 7, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_4"), Core.bundle.get("sam.ban.rule.2_2_4"), 1, 14, 3, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_3_1"), "3.3.1", 1, 3, 1, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1"), Core.bundle.get("sam.ban.rule.3_1"), 14, 30, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_2"), Core.bundle.get("sam.ban.rule.3_2"), 14, 90, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_3"), Core.bundle.get("sam.ban.rule.3_3"), 7, 14, 14, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_3_2"), "3.3.2", 1, 90, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_1"), Core.bundle.get("sam.ban.rule.4_1"), 7, 14, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_2"), Core.bundle.get("sam.ban.rule.4_2"), 1, 14, 2, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_3"), Core.bundle.get("sam.ban.rule.4_3"), 3, 7, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_4"), Core.bundle.get("sam.ban.rule.4_4"), 0, 0, 0, "perm");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_5"), Core.bundle.get("sam.ban.rule.4_5"), 3, 14, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_6"), Core.bundle.get("sam.ban.rule.4_6"), 0, 0, 0, "perm");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_3_3"), "3.3.3", 1, 90, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2_1"), Core.bundle.get("sam.ban.rule.5_2_1"), 1, 3, 2, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2_2"), Core.bundle.get("sam.ban.rule.5_2_2"), 1, 7, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2_3"), Core.bundle.get("sam.ban.rule.5_2_3"), 14, 30, 14, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_5"), "3.5", 3, 30, 1, "d");
+
+
+
+
+
+
 
 
         }).grow().row();
