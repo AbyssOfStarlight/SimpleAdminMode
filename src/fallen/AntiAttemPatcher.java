@@ -73,7 +73,7 @@ public class AntiAttemPatcher {
 
     // Проверка построенного процессора
     private static void checkNewProcessor(EventType.BlockBuildEndEvent event) {
-        if (event.breaking) return;
+        if (event.breaking || event.tile == null || event.tile.build == null) return;
         if (!Vars.net.client()) return;
         PlayerData playerData;
             if(event.unit == null || event.unit.getPlayer() == null) {
@@ -85,7 +85,7 @@ public class AntiAttemPatcher {
                 playerData  = playerHistory.get(event.unit.getPlayer().id);
             }
         Building build = event.tile.build;
-        if (build instanceof LogicBlock.LogicBuild processor) {
+        if (build instanceof LogicBlock.LogicBuild processor && build.team == Vars.player.team()) {
             if (containsBadCode(processor.code, playerData, processor)) {
                 queuePatch(processor);
             }
@@ -94,7 +94,7 @@ public class AntiAttemPatcher {
 
     // Проверка изменённого процессора
     private static void checkConfProcessor(EventType.ConfigEvent event) {
-        if (!Vars.net.client()) return;
+        if (!Vars.net.client()  || Vars.player == null || event.tile == null) return;
         PlayerData playerData = null;
         if(event.player == null) {
             Player fake = Player.create();
@@ -105,7 +105,7 @@ public class AntiAttemPatcher {
             playerData  = playerHistory.get(event.player.id);
         }
         Building build = event.tile;
-        if (build instanceof LogicBlock.LogicBuild processor) {
+        if (build instanceof LogicBlock.LogicBuild processor && build.team == Vars.player.team()) {
             if (containsBadCode(processor.code, playerData, processor)) {
                 queuePatch(processor);
             }
@@ -120,7 +120,7 @@ public class AntiAttemPatcher {
         int patched = 0;
 
         for (Building build : builds) {
-            if (build instanceof LogicBlock.LogicBuild processor) {
+            if (build instanceof LogicBlock.LogicBuild processor && build.team == Vars.player.team()) {
                 if (containsBadCode(processor.code, null, processor)) {
                     queuePatch(processor);
                     patched++;
