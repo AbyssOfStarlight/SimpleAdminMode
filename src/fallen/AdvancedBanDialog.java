@@ -38,25 +38,25 @@ public class AdvancedBanDialog extends BaseDialog {
         cont.pane(table -> {
             table.defaults().pad(4).fillX();
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1"), "2.1", 1, 30, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1"), Core.bundle.get("sam.ban.rule.2_1"), 1, 30, 14, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2"), "2.2", 1, 14, 1, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2"), Core.bundle.get("sam.ban.rule.2_2"), 1, 14, 1, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_3"), "2.3", 1, 7, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_3"), Core.bundle.get("sam.ban.rule.2_3"), 1, 7, 7, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3"), "3", 1, 90, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3"), Core.bundle.get("sam.ban.rule.3"), 1, 90, 7, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4"), "4", 1, 14, 1, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4"), Core.bundle.get("sam.ban.rule.4"), 1, 14, 1, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_1"), "5.1", 1, 30, 2, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_1"), Core.bundle.get("sam.ban.rule.5_1"), 1, 30, 2, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2"), "5.2", 1, 30, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2"), Core.bundle.get("sam.ban.rule.5_2"), 1, 30, 3, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_3"), "5.3", 0, 0, 0, "perm");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_3"), Core.bundle.get("sam.ban.rule.5_3"), 0, 0, 0, "perm");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_4"), "5.4", 1, 30, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_4"), Core.bundle.get("sam.ban.rule.5_4"), 1, 30, 7, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_5"), "5.5", 3, 14, 14, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_5"), Core.bundle.get("sam.ban.rule.5_5"), 3, 14, 14, "d");
 
             // so many many rules...
 
