@@ -187,6 +187,7 @@ public class SimpleAdminMode extends Mod {
 
         int minB = Core.settings.getInt("sam-ag-min-build", 10);
         int maxBr = Core.settings.getInt("sam-ag-max-break", 100);
+        int maxCf = Core.settings.getInt("sam-ag-max-conf", 20);
         int minJ = Core.settings.getInt("sam-ag-min-joins", 5);
         int maxK = Core.settings.getInt("sam-ag-max-kicks", 1);
 
@@ -197,19 +198,20 @@ public class SimpleAdminMode extends Mod {
             if (!data.griefWarned) {
                 boolean suspicious = (data.builds < minB) &&
                         (data.breaks > maxBr) &&
+                        (data.configs > maxCf) &&
                         (data.timesJoined < minJ) &&
                         (data.timesKicked >= maxK);
 
                 if (suspicious) {
                     data.griefWarned = true;
                     Vars.player.sendMessage(Core.bundle.format("sam.ag.alert", data.name) + "\n" +
-                            Core.bundle.format("sam.ag.stats", data.builds, data.breaks, data.timesJoined, data.timesKicked));
+                            Core.bundle.format("sam.ag.stats", data.builds, data.breaks, data.configs, data.timesJoined, data.timesKicked));
                 }
             }
 
             // --- ЛОГИКА 2: АВТО-ФРИЗ (Независимая) ---
             if (!data.player.admin && !data.autoFrozen && Core.settings.getBool("sam-ag-afr", false)) {
-                if ((data.builds < minB * 2) && data.breaks > maxBr * 2 ) {
+                if ((data.builds < minB * 2) && (data.breaks > maxBr * 2 || data.configs > maxCf * 2 )) {
                     data.autoFrozen = true;
 
                     Call.sendChatMessage("/freeze " + data.uuid);

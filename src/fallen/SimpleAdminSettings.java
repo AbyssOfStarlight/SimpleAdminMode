@@ -56,6 +56,7 @@ public class SimpleAdminSettings extends BaseDialog {
 
                 addIntInput(table, "sam.settings.agMinBuild", "sam-ag-min-build", 10);
                 addIntInput(table, "sam.settings.agMaxBreak", "sam-ag-max-break", 100);
+                addIntInput(table, "sam.settings.agMaxConf", "sam-ag-max-conf", 20);
                 addIntInput(table, "sam.settings.agMinJoins", "sam-ag-min-joins", 5);
                 addIntInput(table, "sam.settings.agMaxKicks", "sam-ag-max-kicks", 1);
 
@@ -81,7 +82,7 @@ public class SimpleAdminSettings extends BaseDialog {
                 header(table, "sam.settings.iHateAttems");
                 table.check(Core.bundle.get("sam.settings.iHateAttems"), Core.settings.getBool("sam-aa", false), val -> Core.settings.put("sam-aa", val)).row();
                 table.check(Core.bundle.get("sam.settings.onAttemAlarms"), Core.settings.getBool("sam-oaa", false), val -> Core.settings.put("sam-oaa", val)).row();
-                //table.check(Core.bundle.get("sam.settings.aaBan"), Core.settings.getBool("sam-aab", false), val -> Core.settings.put("sam-aab", val)).row();
+                table.check(Core.bundle.get("sam.settings.aaBan"), Core.settings.getBool("sam-aab", false), val -> Core.settings.put("sam-aab", val)).row();
 
 
             }).grow();
