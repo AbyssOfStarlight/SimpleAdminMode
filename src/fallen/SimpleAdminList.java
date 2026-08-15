@@ -206,13 +206,20 @@ public class SimpleAdminList{
                 nameTable.left().defaults().pad(2);
 
                 // Иконка юнита и переход к нему
-                if (user.player.unit() != null && user.player.unit().type != null) {
-                    nameTable.button(Styles.cleart.disabled, () -> {
-                        control.input.spectate(user.player.unit());
-                    }).width(50f).height(35f).get().image(user.player.unit().icon()).size(20f).scaling(Scaling.fit);
-                } else {
+                if (user.player != null) {
+                    Unit u = user.player.unit();
+                    if (u != null && u.type != null) {  // Игрок онлайн и имеет юнит
+                        nameTable.button(Styles.cleart.disabled, () -> {
+                            control.input.spectate(user.player.unit());
+                        }).width(50f).height(35f).get().image(user.player.unit().icon()).size(20f).scaling(Scaling.fit);
+                    } else {  // Игрок оффлайн, но объект Player сохранился
+                        nameTable.button(Icon.cancelSmall, Styles.cleari, () -> {
+                            Core.camera.position.set(user.player.x, user.player.y);
+                        }).width(50f).height(35f);
+                    }
+                } else {  // Объекта Player нет
                     nameTable.button(Icon.cancelSmall, Styles.cleari, () -> {
-                    }).width(50f).height(35f);
+                            }).width(50f).height(35f);
                 }
                 // Имя игрока (занимает всё доступное место)
                 nameTable.add(user.name).left().growX().wrap();
