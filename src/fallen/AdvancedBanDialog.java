@@ -39,24 +39,13 @@ public class AdvancedBanDialog extends BaseDialog {
             table.defaults().pad(4).fillX();
 
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1"), Core.bundle.get("sam.ban.rule.2_1"), 1, 30, 14, "d");
-
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2"), Core.bundle.get("sam.ban.rule.2_2"), 1, 14, 1, "d");
-
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_3"), Core.bundle.get("sam.ban.rule.2_3"), 1, 7, 7, "d");
-
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3"), Core.bundle.get("sam.ban.rule.3"), 1, 90, 7, "d");
-
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4"), Core.bundle.get("sam.ban.rule.4"), 1, 14, 1, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5"), Core.bundle.get("sam.ban.rule.5_1"), 1, 30, 2, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_1"), Core.bundle.get("sam.ban.rule.5_1"), 1, 30, 2, "d");
-
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2"), Core.bundle.get("sam.ban.rule.5_2"), 1, 30, 3, "d");
-
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_3"), Core.bundle.get("sam.ban.rule.5_3"), 0, 0, 0, "perm");
-
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_4"), Core.bundle.get("sam.ban.rule.5_4"), 1, 30, 7, "d");
-
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_5"), Core.bundle.get("sam.ban.rule.5_5"), 3, 14, 14, "d");
+            table.image().color(Pal.redLight).fillX().height(2).padBottom(10).row();
 
             // so many many rules...
 
@@ -65,33 +54,42 @@ public class AdvancedBanDialog extends BaseDialog {
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_3"), Core.bundle.get("sam.ban.rule.2_1_3"), 14, 90, 14, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_4"), Core.bundle.get("sam.ban.rule.2_1_4"), 7, 30, 14, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_5"), Core.bundle.get("sam.ban.rule.2_1_5"), 30, 90, 30, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_1_6"), Core.bundle.get("sam.ban.rule.2_1_6"), 1, 90, 14, "d");
+
+            table.image().color(Pal.accent).fillX().height(2).padBottom(10).row();
 
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_1"), Core.bundle.get("sam.ban.rule.2_2_1"), 1, 14, 3, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_2"), Core.bundle.get("sam.ban.rule.2_2_2"), 1, 7, 3, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_3"), Core.bundle.get("sam.ban.rule.2_2_3"), 1, 7, 3, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_2_4"), Core.bundle.get("sam.ban.rule.2_2_4"), 1, 14, 3, "d");
 
+            table.image().color(Pal.accent).fillX().height(2).padBottom(10).row();
+
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_3_1"), Core.bundle.get("sam.ban.rule.2_3_1"), 1, 14, 3, "perm");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.2_3_2"), Core.bundle.get("sam.ban.rule.2_3_2"), 1, 14, 3, "d");
+
+            table.image().color(Pal.accent).fillX().height(2).padBottom(10).row();
+
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_1"), Core.bundle.get("sam.ban.rule.3_1"), 14, 30, 14, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_2"), Core.bundle.get("sam.ban.rule.3_2"), 14, 90, 14, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.3_3"), Core.bundle.get("sam.ban.rule.3_3"), 7, 14, 14, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_1"), Core.bundle.get("sam.ban.rule.4_1"), 7, 14, 14, "d");
+            table.image().color(Pal.accent).fillX().height(2).padBottom(10).row();
+
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_1"), Core.bundle.get("sam.ban.rule.4_1"), 1, 14, 14, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_2"), Core.bundle.get("sam.ban.rule.4_2"), 1, 14, 2, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_3"), Core.bundle.get("sam.ban.rule.4_3"), 3, 7, 3, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_4"), Core.bundle.get("sam.ban.rule.4_4"), 0, 0, 0, "perm");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_5"), Core.bundle.get("sam.ban.rule.4_5"), 3, 14, 3, "d");
             addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_6"), Core.bundle.get("sam.ban.rule.4_6"), 0, 0, 0, "perm");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.4_7"), Core.bundle.get("sam.ban.rule.4_7"), 7, 30, 30, "d");
 
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2_1"), Core.bundle.get("sam.ban.rule.5_2_1"), 1, 3, 2, "d");
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2_2"), Core.bundle.get("sam.ban.rule.5_2_2"), 1, 7, 3, "d");
-            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2_3"), Core.bundle.get("sam.ban.rule.5_2_3"), 14, 30, 14, "d");
+            table.image().color(Pal.accent).fillX().height(2).padBottom(10).row();
 
-
-
-
-
-
-
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_1"), Core.bundle.get("sam.ban.rule.5_1"), 1, 30, 3, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_2"), Core.bundle.get("sam.ban.rule.5_2"), 0, 0, 0, "perm");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_3"), Core.bundle.get("sam.ban.rule.5_3"), 1, 30, 7, "d");
+            addRuleRow(table, uuid, Core.bundle.get("sam.ban.rule.5_4"), Core.bundle.get("sam.ban.rule.5_4"), 3, 14, 14, "d");
 
 
         }).grow().row();
