@@ -52,12 +52,25 @@ public class HistoryRender {
             timerAlpha = 1f;
         }
 
-        String cleanFilter = targetNick != null ? Strings.stripColors(targetNick) : null;
+        String cleanFilter = targetNick != null ? getCleanName(targetNick) : null;
 
         if (cleanFilter != null) {
             drawBlocks(cleanFilter);
             drawConfigs(cleanFilter);
         }
+    }
+
+    private static String getCleanName(String formattedName) {
+        if (formattedName == null) return null;
+
+        String stripped = Strings.stripColors(formattedName);
+        String[] parts = stripped.split("> ");
+
+        if (parts.length > 1) {
+            return parts[parts.length - 1].trim();
+        }
+
+        return stripped.trim();
     }
 
     private static void drawBlocks(String filter) {
