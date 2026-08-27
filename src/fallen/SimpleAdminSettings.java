@@ -38,6 +38,7 @@ public class SimpleAdminSettings extends BaseDialog {
                 table.check(Core.bundle.get("sam.settings.closeOutside"), Core.settings.getBool("sam-close-outside", true), val -> Core.settings.put("sam-close-outside", val)).row();
                 table.check(Core.bundle.get("sam.settings.closeListOnInfo"), Core.settings.getBool("sam-close-list", false), val -> Core.settings.put("sam-close-list", val)).row();
                 table.check(Core.bundle.get("sam.settings.closeListOutside"), Core.settings.getBool("sam-close-listoutside", false), val -> Core.settings.put("sam-close-listoutside", val)).row();
+                table.check(Core.bundle.get("sam.settings.defaultSelectAll"), Core.settings.getBool("sam-default-select-all", false), val -> Core.settings.put("sam-default-select-all", val)).row();
 
                 // --- СЕКЦИЯ: ФУНКЦИИ ---
                 header(table, "sam.settings.functions");
